@@ -1,0 +1,91 @@
+import java.io.*;
+
+ class report
+ {
+  static void main(String args[])throws IOException
+	 {	
+	 InputStreamReader read=new InputStreamReader(System.in);
+
+	 BufferedReader in= new BufferedReader(read);
+
+	 String n[]=new String [50];//n for student_names
+
+	 String s[]=new String [3];// s for subject
+
+	 int m[][]=new int [5][3]; //marks
+	 
+	 int  total=0,marks,max;//max for the mark out of,avg for AVERAGE
+	 
+	 double avg=0,percentage=0;
+	 
+	 char ch=' ';
+	 
+	 System.out.println ("Marks out of");
+	 
+	 max=Integer.parseInt(in.readLine());
+
+	 String names,sub;// sub for subjects
+	 
+	 // To Enter the names of the students"
+	 
+	 System.out.println("Enter the names of the students, one per each line");
+
+	 for(int i=0;i<5;i++)
+	 {   System.out.print(i+1 +")");		 
+		 names=in.readLine();	
+		 n[i]=names;	  }
+		
+	 // To Enter the subjects
+	  
+	  System.out.println("Enter the Subjects");
+	  for(int i=0;i<3;i++)
+	  {  System.out.print(i+1 +")");
+		 sub=in.readLine();		 
+		 s[i]=sub;}
+		 //to take up the marks			 
+		   for(int i=0;i<5;i++)		
+		   {for(int j=0;j<3;j++)			   
+			{   System.out.println("Enter the marks of " + n[i] + " for the subject "+s[j] +" :");				 
+				marks=Integer.parseInt(in.readLine());
+				if(marks>max)
+				{System.out.println("Error ");
+				break;}
+				else
+				m[i][j]=marks;}}				
+				for(int i=0;i<5;i++)
+				{System.out.println("Name of the student="+n[i]);
+				System.out.println("Marks of the subject are");
+			   for(int j=0;j<3;j++){			   
+			   System.out.print(s[j]+"	");}
+			   System.out.println("\n"); 
+			   for(int z=0;z<3;z++)
+			   {System.out.print(m[i][z]+"	 ");			  
+			   total=total+m[i][z];
+			   avg=(total/3);
+			   percentage=((avg/(max))*100);
+			   System.out.println();}
+			   System.out.println("Total="+ total);
+			   System.out.println("Average="+avg);			   
+			   if(percentage>=90)
+			   ch='A';			   
+			   else if(percentage<=80&&percentage>=89)
+			   ch='B';
+			   else if(percentage<70&&percentage>=79)
+			   ch='C';
+			   else if(percentage<60&&percentage>69)
+			   ch='D';
+			   else if(percentage<=40&&percentage>59)
+			   ch='E';
+			   else if(percentage<40)
+			   ch='F'; 
+			   System.out.println("Grade="+ch);
+			   ch=' ';
+			   total=0;
+			   avg=0;
+			   percentage=0;			   
+			   System.out.println();
+			 
+			  
+			  }  
+	   }
+}
